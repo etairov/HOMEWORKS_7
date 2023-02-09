@@ -10,3 +10,58 @@ m = 3, n = 4.
 */
 //----------------------
 
+int GetNumber(string message)
+{
+    int result = 0;
+
+    while (true)
+    {
+        Console.WriteLine(message);
+
+        if (int.TryParse(Console.ReadLine(), out result) && result > 0)
+        {
+            break;
+        }
+        else
+        {
+            Console.WriteLine("Ввели не корректное число. Повторите ввод.");
+        }
+    }
+
+    return result;
+}
+
+double[,] InitMatrix(int rows, int columns)
+{
+    double[,] matrix = new double[rows, columns];
+    Random rnd = new Random();
+
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            matrix[i, j] = Math.Round(rnd.Next(-100, 100) * 0.5, 2);
+        }
+    }
+
+    return matrix;
+}
+
+void PrintMatrix(double[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            Console.Write($"{matrix[i, j]}      ");
+        }
+
+        Console.WriteLine();
+    }
+}
+
+int countOfRows = GetNumber("Введите кол-во строк:");
+int countOfColumns = GetNumber("Введите кол-во столбцов:");
+double[,] matrix = InitMatrix(countOfRows, countOfColumns);
+
+PrintMatrix(matrix);
