@@ -71,9 +71,7 @@ void CheckIndexMatrix(int[,] matrix)
 
     if (i <= matrix.GetLength(0) && j <= matrix.GetLength(1))
     {
-        //Console.WriteLine("number[{0},{0}] = {1}", j, matrix[i, j]);
-        Console.WriteLine($"Выводим элемент {matrix[i, j]}");
-       
+        Console.WriteLine("number[{0},{1}] = {2}", i, j, matrix[i, j]);
     }
 
     else Console.WriteLine($"Нет элемента с введенными индексами");
